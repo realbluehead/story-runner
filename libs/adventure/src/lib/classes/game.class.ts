@@ -16,6 +16,7 @@ export interface ObjectImport {
   description: string;
 }
 export interface SceneImport {
+  name: string;
   exits?: ExitImport[];
   objects?: string[];
 }
@@ -92,6 +93,7 @@ export class Game {
         this._getObjectByName(name)
       );
       if (objs) scene.objects = objs;
+      scene.name = game.scenes[key].name;
       this._scenes[key] = scene;
     }
     // Add connections between scenes

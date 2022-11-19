@@ -9,6 +9,13 @@ export class Scene {
   public set key(key: string) {
     this._key = key;
   }
+  private _name!: string;
+  public get name(): string {
+    return this._name;
+  }
+  public set name(value: string) {
+    this._name = value;
+  }
   private _description!: string;
   public get description(): string {
     return this._description;

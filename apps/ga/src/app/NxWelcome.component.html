@@ -2,7 +2,7 @@
   <div id="title_exits">
     <div>
       <div id="scene_title">
-        <span class="title">Scene: </span>{{ scene?.key }}
+        <span class="title">Scene: </span>{{ scene?.name }}
       </div>
       <div id="scene_objects">
         <div class="title">Objects</div>
@@ -28,7 +28,10 @@
     </div>
   </div>
 
-  <!--  <div id="console">Console</div>
-  <div id="actions">Actions</div>
+  <div id="console">
+    <div class="title">Console</div>
+    <div id="console_message">{{ message }}</div>
+    <!-- <div id="actions">Actions</div>
   <div id="inventory">Inventory</div> -->
+  </div>
 </div>

@@ -15,6 +15,7 @@ export class NxWelcomeComponent implements OnInit {
   public exits?: Scene[];
   public scene?: Scene;
   public game?: Game;
+  public message?: string;
   constructor() {}
 
   ngOnInit(): void {
@@ -24,13 +25,13 @@ export class NxWelcomeComponent implements OnInit {
     this.exits = this.game.getCurrentExits();
   }
 
-  public selectObject(event: any) {
-    console.log(event);
+  public selectObject(object: any) {
+    this.message = object.description;
   }
 
   public selectExit(exit: any) {
-    console.log(exit);
-    this.game?.useExit(exit);
+    this.message = `You used exit ${exit.name}`;
+    this.scene = this.game?.useExit(exit);
     this.objects = this.game?.getCurrentObjects();
     this.exits = this.game?.getCurrentExits();
   }
