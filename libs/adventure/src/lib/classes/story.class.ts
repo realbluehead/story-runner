@@ -1,7 +1,6 @@
 export class Story {
   private _currentScene!: Scene;
 }
-
 export class Scene {
   private _key!: string;
   public get key(): string {
@@ -18,7 +17,19 @@ export class Scene {
     this._description = value;
   }
   private _objects!: GameObject[];
+  public get objects(): GameObject[] {
+    return this._objects;
+  }
+  public set objects(value: GameObject[]) {
+    this._objects = value;
+  }
   private _exits!: Scene[];
+  public get exits(): Scene[] {
+    return this._exits;
+  }
+  public set exits(value: Scene[]) {
+    this._exits = value;
+  }
 
   public constructor(key: string) {
     this.key = key;
@@ -28,6 +39,9 @@ export class Scene {
   public addExit(scene: Scene, bothways: boolean = true) {
     this._exits.push(scene);
     if (bothways) scene.addExit(this, false);
+  }
+  public addObject(obj: GameObject) {
+    this._objects.push(obj);
   }
 }
 

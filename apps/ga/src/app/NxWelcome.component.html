@@ -1,0 +1,34 @@
+<div id="scene_container">
+  <div id="title_exits">
+    <div>
+      <div id="scene_title">
+        <span class="title">Scene: </span>{{ scene?.key }}
+      </div>
+      <div id="scene_objects">
+        <div class="title">Objects</div>
+        <div
+          *ngFor="let object of objects"
+          class="clickable"
+          (click)="selectObject(object)"
+        >
+          {{ object.key }}
+        </div>
+      </div>
+    </div>
+
+    <div id="scene_exits">
+      <div class="title">Exists</div>
+      <div
+        *ngFor="let exit of exits"
+        class="clickable"
+        (click)="selectExit(exit)"
+      >
+        {{ exit.key }}
+      </div>
+    </div>
+  </div>
+
+  <!--  <div id="console">Console</div>
+  <div id="actions">Actions</div>
+  <div id="inventory">Inventory</div> -->
+</div>

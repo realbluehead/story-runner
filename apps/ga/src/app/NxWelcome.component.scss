@@ -1,0 +1,39 @@
+#scene_container {
+    display:flex;
+    flex-direction: column;
+    border:1px solid #ccc;
+    padding: 8px;
+    height: 400px;
+}
+
+#title_exits {
+    display: flex;
+    justify-content: space-between;
+}
+
+#scene_exits {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    padding: 8px;
+}
+#scene_objects {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    padding: 8px;
+}
+.clickable:hover {
+    cursor: pointer;
+    color: yellow;
+}
+#scene_title {
+    border: 1px solid #ccc;
+    padding: 8px;
+}
+
+.title {
+    font-size: 18px;
+    color: yellow;
+    padding-bottom:8px
+}
