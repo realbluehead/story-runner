@@ -5,6 +5,18 @@ export interface GameImport {
   start_scene: string;
   scenes: ScenesImport;
   objects: ObjectsImport;
+  rules: RuleImport[];
+}
+
+export interface RuleImport {
+  action: string;
+  param1: string;
+  param2?: string;
+  outcomes: OutcomeImport[];
+}
+export interface OutcomeImport {
+  type: string;
+  params: string[];
 }
 export interface ScenesImport {
   [key: string]: SceneImport;
@@ -14,6 +26,7 @@ export interface ObjectsImport {
 }
 export interface ObjectImport {
   description: string;
+  get?: boolean;
 }
 export interface SceneImport {
   name: string;
@@ -55,8 +68,10 @@ export class Game {
     this._title = value;
   }
   private _currentScene!: Scene;
+  private _rules: any;
 
   public constructor(game?: GameImport) {
+    this._rules = {};
     if (game) {
       this._importGame(game);
     }
@@ -83,7 +98,10 @@ export class Game {
     this.scenes = {};
     // Add Objects
     for (const key in game.objects) {
-      const obj = new GameObject(key, game.objects[key].description);
+      const cobj = game.objects[key];
+      const obj = new GameObject(key, cobj.description, {
+        get: cobj.get ? cobj.get : false,
+      });
       this._objects[key] = obj;
     }
     // Add Scenes without references
@@ -103,6 +121,17 @@ export class Game {
         this._scenes[key].addExit(this.scenes[exit.key], exit.bothways);
       });
     }
+    // Add rules
+    game.rules.forEach((rule: RuleImport) => {
+      if (!this._rules[rule.action]) {
+        this._rules[rule.action] = {};
+      }
+      if (!this._rules[rule.action][rule.param1]) {
+        this._rules[rule.action][rule.param1] = [];
+      }
+      this._rules[rule.action][rule.param1].push(rule);
+    });
+    console.log(this._rules);
     // Set Starting scene
     this.startScene = this._getSceneByName(game.start_scene);
   }

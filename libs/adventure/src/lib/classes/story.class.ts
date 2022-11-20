@@ -67,9 +67,11 @@ export class GameObject {
   public set description(description: string) {
     this._description = description;
   }
+  private actions!: object;
 
-  public constructor(key: string, description: string) {
+  public constructor(key: string, description: string, actions: object) {
     this.key = key;
     this.description = description;
+    this.actions = actions;
   }
 }

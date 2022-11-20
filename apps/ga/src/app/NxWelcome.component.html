@@ -31,7 +31,26 @@
   <div id="console">
     <div class="title">Console</div>
     <div id="console_message">{{ message }}</div>
-    <!-- <div id="actions">Actions</div>
-  <div id="inventory">Inventory</div> -->
+  </div>
+  <div id="actions">
+    <div class="'title">Actions</div>
+    <div class="action_set">
+      <div class="action_button" (click)="startAction('inspect')">Inspect</div>
+      <div class="action_button" (click)="startAction('get')">Get</div>
+      <div class="action_button">Open</div>
+      <div class="action_button">Close</div>
+      <div class="action_button">Use</div>
+      <div class="action_button">Throw</div>
+    </div>
+  </div>
+  <div id="inventory">
+    <div>Inventory</div>
+    <div
+      *ngFor="let object of inventory"
+      class="clickable"
+      (click)="selectObject(object)"
+    >
+      {{ object.key }}
+    </div>
   </div>
 </div>

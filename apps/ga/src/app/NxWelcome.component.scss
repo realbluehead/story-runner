@@ -3,7 +3,7 @@
     flex-direction: column;
     border:1px solid #ccc;
     padding: 8px;
-    height: 400px;
+    
 }
 
 #title_exits {
@@ -40,8 +40,41 @@
 }
 
 #console {
-    width:100%;
+    justify-self: flex-start;
     margin-top:8px;
     border: 1px solid #ccc;
     padding: 8px;
+    min-height: 64px;
+}
+
+#actions {
+    justify-self: flex-start;
+    margin-top:8px;
+    border: 1px solid #ccc;
+    padding: 8px;
+}
+
+#inventory {
+    justify-self: flex-start;
+    margin-top:8px;
+    border: 1px solid #ccc;
+    padding: 8px;
+}
+
+.action_button {
+    border: 1px solid #ccc;
+    color: #ccc;
+    border-radius: 5px;
+    margin:8px 8px;
+    padding: 4px;
+
+    &:hover {
+        background: #ccc;
+        color: black;
+        cursor: pointer;
+    }
+}
+.action_set {
+    display:flex;
+    flex-direction: row;
 }
